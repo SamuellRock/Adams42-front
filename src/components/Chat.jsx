@@ -1,30 +1,62 @@
+import React from "react"
+import { useState } from "react"
 
-function Chat(){
+function Chat() {
+  const [message, setMessage] = useState(""); // Estado para armazenar o valor do input
+  const [messages, setMessages] = useState([]); // Estado para armazenar as mensagens enviadas
+  const [isLoading, setIsLoading] = useState(false); // Estado para controlar o carregamento
 
-    const enviar = () => {
-        alert('Mensagem enviada!');
+  const enviar = () => {
+    if (message.trim() !== "") {
+      setMessages([...messages, message]); // mensagem adicionada na lista de mensagem
+      setMessage("");
+
+      setIsLoading(true);
+      setTimeout(() => {
+        setIsLoading(false);
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          "Mensagem generica que no futuro virá da IA",
+        ]);
+      }, 2000);
     }
-     
-    return(
-        <>
-        <main>
-            <div className="chat-container">
-                <div className="chat-message">
-                    o tema é "Seismic Detection Across the Solar System" me traga informações em portugues sobre esse tema?
-                </div>
-                <div className="chat-message">
-                    A detecção sísmica no sistema solar envolve a aplicação de métodos sísmicos para estudar planetas e luas além da Terra. Na Terra, usamos sismógrafos para detectar e analisar terremotos, mas no espaço, a abordagem é mais complexa. Em outros corpos celestes, como Marte, por exemplo, a sismologia é realizada usando instrumentos como o SEIS (Seismic Experiment for Interior Structure) do rover InSight, que mede vibrações para entender a estrutura interna do planeta. Em luas como a Europa, de Júpiter, e Titã, de Saturno, técnicas indiretas ajudam a inferir a atividade sísmica e a estrutura interna. Essas análises ajudam a compreender a geologia e a formação de outros corpos celestes, oferecendo insights sobre sua evolução e atividade interna.
-                </div>
-            </div>
+  };
 
-            <div className="chat-input">
-                <input type="text" placeholder="Escreva seu questionamento" />
-                <button onClick={enviar}>ENVIAR &gt;&gt;</button>
-            </div>
-        </main>
-        </>
-    )
+  // click "Enter"
+  const enterPress = (tecla) => {
+    if (tecla.key === "Enter") {
+      enviar();
+    }
+  };
 
+  return (
+    <main>
+      <div className="chat-container">
+        {messages.map((msg, msgList) => (
+          <div key={msgList} className="chat-message user-balloon">
+            {msg}
+          </div>
+        ))}
+
+        {isLoading && (
+          <div className="chat-message loading">
+            <div className="loader"></div>
+          </div>
+        )}
+      </div>
+
+      <div className="chat-input">
+        <input
+          type="text"
+          placeholder="Escreva seu questionamento"
+          value={message}
+          onChange={(tecla) => setMessage(tecla.target.value)}
+          onKeyDown={enterPress}
+        />
+        <button onClick={enviar}>ENVIAR &gt;&gt;</button>
+      </div>
+    </main>
+  );
 }
 
 export default Chat;
