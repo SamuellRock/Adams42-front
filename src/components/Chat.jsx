@@ -2,9 +2,9 @@ import React from "react"
 import { useState } from "react"
 
 function Chat() {
-  const [message, setMessage] = useState(""); // Estado para armazenar o valor do input
-  const [messages, setMessages] = useState([]); // Estado para armazenar as mensagens enviadas
-  const [isLoading, setIsLoading] = useState(false); // Estado para controlar o carregamento
+  const [message, setMessage] = useState(""); // state para armazenar o valor do input
+  const [messages, setMessages] = useState([]); // state para armazenar lista de mensagens enviadas
+  const [isLoading, setIsLoading] = useState(false); // state para controlar o carregamento
 
   const enviar = () => {
     if (message.trim() !== "") {
