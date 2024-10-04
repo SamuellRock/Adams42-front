@@ -1,48 +1,48 @@
-import React from "react"
-import { useState } from "react"
+import React, { useState, useEffect, useRef } from "react";
 
 function Chat() {
-  const [message, setMessage] = useState(""); // state para armazenar o valor do input
-  const [messages, setMessages] = useState([]); // state para armazenar lista de mensagens enviadas
-  const [isLoading, setIsLoading] = useState(false); // state para controlar o carregamento
+  const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const chatEndRef = useRef(null);
+
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   const enviar = () => {
-    if (message.trim() !== "") {
-      setMessages([...messages, message]); // mensagem adicionada na lista de mensagem
+    if (message.trim()) {
+      setMessages([...messages, message]);
       setMessage("");
-
       setIsLoading(true);
       setTimeout(() => {
         setIsLoading(false);
         setMessages((prevMessages) => [
           ...prevMessages,
-          "Mensagem generica que no futuro virá da IA",
+          "Mensagem genérica que no futuro virá da IA",
         ]);
       }, 2000);
     }
   };
 
-  // click "Enter"
-  const enterPress = (tecla) => {
-    if (tecla.key === "Enter") {
-      enviar();
-    }
+  const enterPress = (e) => {
+    if (e.key === "Enter") enviar();
   };
 
   return (
     <main>
       <div className="chat-container">
-        {messages.map((msg, msgList) => (
-          <div key={msgList} className="chat-message user-balloon">
+        {messages.map((msg, index) => (
+          <div key={index} className="chat-message user-balloon">
             {msg}
           </div>
         ))}
-
         {isLoading && (
           <div className="chat-message loading">
             <div className="loader"></div>
           </div>
         )}
+        <div ref={chatEndRef} />
       </div>
 
       <div className="chat-input">
@@ -50,7 +50,7 @@ function Chat() {
           type="text"
           placeholder="Escreva seu questionamento"
           value={message}
-          onChange={(tecla) => setMessage(tecla.target.value)}
+          onChange={(e) => setMessage(e.target.value)}
           onKeyDown={enterPress}
         />
         <button onClick={enviar}>ENVIAR &gt;&gt;</button>
