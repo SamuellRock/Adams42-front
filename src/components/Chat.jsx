@@ -10,18 +10,42 @@ function Chat() {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const enviar = () => {
+  const enviar = async () => {
     if (message.trim()) {
-      setMessages([...messages, message]);
+      
+      setMessages((prevMessages) => [...prevMessages, { user: true, text: message }]);
       setMessage("");
       setIsLoading(true);
-      setTimeout(() => {
-        setIsLoading(false);
+
+      try {
+        const response = await fetch("http://localhost:8000/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ message }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Erro na resposta do servidor");
+        }
+
+        const data = await response.json();
+
+
         setMessages((prevMessages) => [
           ...prevMessages,
-          "Mensagem genérica que no futuro virá da IA",
+          { user: false, text: data.response },
         ]);
-      }, 2000);
+      } catch (error) {
+        console.error("Erro ao enviar a mensagem:", error);
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { user: false, text: "Ocorreu um erro ao enviar a mensagem." },
+        ]);
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -33,10 +57,14 @@ function Chat() {
     <main>
       <div className="chat-container">
         {messages.map((msg, index) => (
-          <div key={index} className="chat-message user-balloon">
-            {msg}
+          <div
+            key={index}
+            className={`chat-message ${msg.user ? "user-balloon" : "assistant-balloon"}`}
+          >
+            {msg.text}
           </div>
         ))}
+        
         {isLoading && (
           <div className="chat-message loading">
             <div className="loader"></div>
