@@ -55,33 +55,37 @@ function Chat() {
 
   return (
     <main>
-      <div className="chat-container">
-        {messages.map((msg, index) => (
-          <div
-            key={index}
-            className={`chat-message ${msg.user ? "user-balloon" : "assistant-balloon"}`}
-          >
-            {msg.text}
-          </div>
-        ))}
-        
-        {isLoading && (
-          <div className="chat-message loading">
-            <div className="loader"></div>
-          </div>
-        )}
-        <div ref={chatEndRef} />
-      </div>
+      <div className="container">
 
-      <div className="chat-input">
-        <input
-          type="text"
-          placeholder="Escreva seu questionamento"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          onKeyDown={enterPress}
-        />
-        <button onClick={enviar}>ENVIAR &gt;&gt;</button>
+        <div className="chat-container">
+          {messages.map((msg, index) => (
+            <div
+              key={index}
+              className={`chat-message ${msg.user ? "user-balloon" : "assistant-balloon"}`}
+            >
+              {msg.text}
+            </div>
+          ))}
+          
+          {isLoading && (
+            <div className="chat-message loading">
+              <div className="loader"></div>
+            </div>
+          )}
+          <div ref={chatEndRef} />
+        </div>
+
+        <div className="chat-input">
+          <input
+            type="text"
+            placeholder="Escreva seu questionamento"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={enterPress}
+          />
+          <button onClick={enviar}>ENVIAR &gt;&gt;</button>
+        </div>
+              
       </div>
     </main>
   );

@@ -11,9 +11,9 @@ function App() {
 
         <Chat />
 
-        <footer>
+        {/* <footer>
             © 2024 Hackaton Nasa Challenger. Copyright and All rights reserved.
-        </footer>
+        </footer> */}
       </>
   );
 }
