@@ -50,6 +50,11 @@ header {
   color: var(--color-accent);
 }
 
+.btn-logo{
+  background-color: transparent;
+  border-color: transparent;
+}
+
 nav a {
   font-family: var(--font-main);
   margin: 0 15px;
@@ -94,10 +99,10 @@ main {
 
 .chat-input {
   display: flex;
-  width: 100%;
+  width: 100%; 
   position: fixed;
-  bottom: 0;
-  left: 250px;
+  bottom: 50px;
+  left: 0; 
   background-color: var(--color-bg-accent);
   justify-content: center;
   padding: 10px 20px;
@@ -138,6 +143,10 @@ footer {
   color: var(--color-border);
   font-size: 14px;
   box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+  position: fixed; 
+  bottom: 0;
+  left: 0;
+  right: 0; 
 }
 
 .loading {
