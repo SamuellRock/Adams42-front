@@ -2,7 +2,7 @@
   --font-main: "Inter", sans-serif;
   --font-logo: "Jura", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
-  
+
   --color-bg: #121212;
   --color-bg-secondary: #1f1f1f;
   --color-bg-accent: #282828;
@@ -50,7 +50,7 @@ header {
   color: var(--color-accent);
 }
 
-.btn-logo{
+.btn-logo {
   background-color: transparent;
   border-color: transparent;
 }
@@ -76,10 +76,43 @@ main {
   padding: 20px;
 }
 
+/*
+.container{
+  display: flex;
+  width: 60%;
+  max-width: 800px;
+  justify-content: center;
+  height: calc(100vh - 120px);
+}
+*/
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  max-width: 800px;
+  justify-content: center;
+  height: calc(100vh - 120px);
+}
+
+/*
 .chat-container {
   width: 60%;
   max-width: 800px;
   height: calc(100vh - 120px);
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: var(--color-bg-secondary);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+*/
+
+.chat-container {
+  width: 100%; /* Usa todo o espaço da largura disponível */
+  height: calc(
+    100vh - 180px
+  ); /* Ajusta o tamanho para deixar espaço para o input */
   overflow-y: auto;
   margin-bottom: 20px;
   padding: 20px;
@@ -97,6 +130,7 @@ main {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/*
 .chat-input {
   display: flex;
   width: 100%; 
@@ -108,6 +142,16 @@ main {
   padding: 10px 20px;
   border-radius: 50px;
   z-index: 1;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+}
+*/
+.chat-input {
+  display: flex;
+  width: 100%;
+  background-color: var(--color-bg-accent);
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 50px;
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -143,10 +187,10 @@ footer {
   color: var(--color-border);
   font-size: 14px;
   box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
-  position: fixed; 
+  position: fixed;
   bottom: 0;
   left: 0;
-  right: 0; 
+  right: 0;
 }
 
 .loading {
