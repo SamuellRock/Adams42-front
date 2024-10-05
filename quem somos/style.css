@@ -1,0 +1,90 @@
+:root {
+    --color-bg: #0d0d0d;
+    --color-accent: #ff4500;
+    --color-text: #f0f0f0;
+    --color-secondary: #2c2c2c;
+    --font-main: 'Nunito', sans-serif;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    background-image: url('https://example.com/avengers-background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.section-title {
+    font-size: 3rem;
+    text-align: center;
+    color: var(--color-accent);
+    text-shadow: 2px 2px 4px #000;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza o conteúdo */
+    max-width: 900px; /* Limita a largura para controlar o layout */
+    margin: 0 auto; /* Centraliza o container */
+}
+
+.team-member {
+    background-color: var(--color-secondary);
+    border-radius: 15px;
+    padding: 20px;
+    width: 220px; /* Reduzi o tamanho */
+    text-align: center;
+    margin: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.team-member:hover {
+    transform: scale(1.05); /* Mantive o efeito hover */
+}
+
+.team-member i {
+    margin-bottom: 20px;
+    color: var(--color-accent);
+    animation: pulse 1s infinite;
+}
+
+.team-member h3 {
+    margin: 15px 0;
+    font-size: 1.8rem;
+    color: var(--color-accent);
+    text-shadow: 1px 1px 3px #000;
+}
+
+.team-member p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+}
+
+.team-member a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.team-member a:hover {
+    color: var(--color-accent);
+    text-shadow: 1px 1px 3px #000;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

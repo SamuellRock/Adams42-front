@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Devengers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="titulo">Devengers</h1>
+            <p id="intro">Clique nos cards para descobrir mais!</p>
+        </header>
+
+        <section id="cards-container">
+            <div class="card" onclick="showCardDetails('projeto')">
+                <h2>O Projeto</h2>
+                <p>Descubra o que é o Devengers!</p>
+            </div>
+
+            <div class="card" onclick="showCardDetails('python')">
+                <h2>Python</h2>
+                <p>A linguagem principal.</p>
+            </div>
+
+            <div class="card" onclick="showCardDetails('react')">
+                <h2>React</h2>
+                <p>Front-end moderno.</p>
+            </div>
+
+            <div class="card" onclick="showCardDetails('ia')">
+                <h2>Inteligência Artificial</h2>
+                <p>Inovações com IA.</p>
+            </div>
+        </section>
+
+        <section id="card-details" class="hidden">
+            <h2 id="card-title"></h2>
+            <p id="card-description"></p>
+            <button id="close-btn" onclick="closeCardDetails()">Fechar</button>
+        </section>
+
+        <footer>
+            <p>Missão liderada por Samuel - Devengers Team</p>
+        </footer>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
