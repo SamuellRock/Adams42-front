@@ -76,15 +76,6 @@ main {
   padding: 20px;
 }
 
-/*
-.container{
-  display: flex;
-  width: 60%;
-  max-width: 800px;
-  justify-content: center;
-  height: calc(100vh - 120px);
-}
-*/
 .container {
   display: flex;
   flex-direction: column;
@@ -94,19 +85,6 @@ main {
   height: calc(100vh - 120px);
 }
 
-/*
-.chat-container {
-  width: 60%;
-  max-width: 800px;
-  height: calc(100vh - 120px);
-  overflow-y: auto;
-  margin-bottom: 20px;
-  padding: 20px;
-  background-color: var(--color-bg-secondary);
-  border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-*/
 
 .chat-container {
   width: 100%; /* Usa todo o espaço da largura disponível */
@@ -130,21 +108,7 @@ main {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/*
-.chat-input {
-  display: flex;
-  width: 100%; 
-  position: fixed;
-  bottom: 50px;
-  left: 0; 
-  background-color: var(--color-bg-accent);
-  justify-content: center;
-  padding: 10px 20px;
-  border-radius: 50px;
-  z-index: 1;
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
-}
-*/
+
 .chat-input {
   display: flex;
   width: 100%;
@@ -254,4 +218,102 @@ footer {
 
 .chat-container::-webkit-scrollbar-thumb:hover {
   background-color: #888888;
+}
+
+
+.hamburger {
+  display: none; /* Oculta o botão por padrão */
+  flex-direction: column;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.bar {
+  height: 3px;
+  width: 25px;
+  background-color: var(--color-text);
+  margin: 2px 0;
+}
+
+
+
+
+
+
+/* Estilos gerais para telas pequenas */
+@media (max-width: 768px) {
+  .container {
+    width: 90%; /* Aumenta a largura para preencher mais espaço */
+    height: auto; /* Ajusta a altura para ser dinâmica */
+    padding: 10px; /* Adiciona um pouco de espaçamento */
+  }
+
+  .chat-container {
+    height: calc(100vh - 180px); /* Mantém a altura, mas permite mais flexibilidade */
+    padding: 10px; /* Reduz o preenchimento */
+  }
+
+  .chat-input {
+    padding: 5px; /* Ajusta o preenchimento do input */
+  }
+
+  .chat-input input {
+    height: 40px; /* Reduz a altura do input para caber melhor em telas pequenas */
+    padding: 5px 10px; /* Ajusta o preenchimento do input */
+  }
+
+  .chat-input button {
+    padding: 5px 15px; /* Reduz o preenchimento do botão */
+  }
+
+  footer {
+    font-size: 12px; /* Ajusta o tamanho da fonte no footer */
+  }
+}
+
+/* Estilos para telas menores que 480px */
+@media (max-width: 510px) {
+  .logo {
+    font-size: 24px; /* Reduz o tamanho do logo */
+  }
+
+  .chat-message {
+    padding: 15px; /* Reduz o padding das mensagens do chat */
+  }
+
+  .chat-input input {
+    padding: 5px; /* Ajusta o padding do input */
+  }
+
+  .chat-input button {
+    padding: 5px 10px; /* Ajusta o padding do botão */
+  }
+
+  .sidebar {
+    width: 200px; /* Reduz a largura da sidebar */
+  }
+
+  .main-content {
+    margin-left: 200px; /* Ajusta a margem para a nova largura da sidebar */
+  }
+
+  nav {
+    display: none; /* Oculta o menu de navegação por padrão */
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--color-bg-secondary);
+    position: absolute;
+    top: 60px; /* Ajuste conforme necessário */
+    left: 0;
+    z-index: 10;
+  }
+
+  nav.active {
+    display: flex; /* Mostra o menu quando ativo */
+  }
+
+  .hamburger {
+    display: flex; /* Mostra o botão hambúrguer */
+  }
 }
