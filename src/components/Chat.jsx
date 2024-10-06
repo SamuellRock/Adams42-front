@@ -78,12 +78,12 @@ function Chat() {
         <div className="chat-input">
           <input
             type="text"
-            placeholder="Escreva seu questionamento"
+            placeholder="Write your question"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyDown={enterPress}
           />
-          <button onClick={enviar}>ENVIAR &gt;&gt;</button>
+          <button onClick={enviar}> SEND </button>
         </div>
               
       </div>

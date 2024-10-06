@@ -5,9 +5,9 @@ function HeaderGlobal(){
         <header>
             <button className="btn-logo"><div className="logo">Adams<span>42</span></div></button>
             <nav>
-                <a href="#">Inicio</a>
+                <a href="#">Home</a>
                 <a href="#">Chat</a>
-                <a href="#">Quem somos</a>
+                <a href="#">About Us</a>
             </nav>
         </header>
     )
