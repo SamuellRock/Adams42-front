@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import ReactMarkdown from 'react-markdown';
 
 function Chat() {
   const [message, setMessage] = useState("");
@@ -13,7 +14,7 @@ function Chat() {
   const enviar = async () => {
     if (message.trim()) {
       
-      setMessages((prevMessages) => [...prevMessages, { user: true, text: message }]);
+      setMessages((prevMessages) => [...prevMessages, { user: true, text: formatMessage(message) }]);
       setMessage("");
       setIsLoading(true);
 
@@ -31,11 +32,12 @@ function Chat() {
         }
 
         const data = await response.json();
-
+        
+        const formattedResponse = formatMessage(data.response);
 
         setMessages((prevMessages) => [
           ...prevMessages,
-          { user: false, text: data.response },
+          { user: false, text: formattedResponse },
         ]);
       } catch (error) {
         console.error("Erro ao enviar a mensagem:", error);
@@ -49,6 +51,10 @@ function Chat() {
     }
   };
 
+  const formatMessage = (text) => {
+    return text.replace(/([.?!])\s+/g, "$1\n\n");
+  };
+
   const enterPress = (e) => {
     if (e.key === "Enter") enviar();
   };
@@ -56,14 +62,19 @@ function Chat() {
   return (
     <main>
       <div className="container">
-
         <div className="chat-container">
           {messages.map((msg, index) => (
             <div
               key={index}
               className={`chat-message ${msg.user ? "user-balloon" : "assistant-balloon"}`}
+              style={{
+                marginBottom: '2.5em',  // Espaço entre as frases
+                lineHeight: '2.6',      // Espaço entre linhas da mesma frase
+              }}
             >
-              {msg.text}
+              <div className="message-text">
+                <ReactMarkdown>{msg.text}</ReactMarkdown>
+              </div>
             </div>
           ))}
           
@@ -85,7 +96,6 @@ function Chat() {
           />
           <button onClick={enviar}> SEND </button>
         </div>
-              
       </div>
     </main>
   );
