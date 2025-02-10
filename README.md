@@ -5,4 +5,7 @@ npm install
 
 ## rodar o servidor react pelo Vite
 npm run dev
+
+## Tela do Chat
+![chat](public/Captura%20ChatBot.jpg)
  
